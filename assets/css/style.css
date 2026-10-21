@@ -1,0 +1,211 @@
+/* ==========================================================
+   Colors and fonts live here. Change --accent to restyle the site.
+   ========================================================== */
+:root {
+  --bg: #ffffff;
+  --text: #1f2328;
+  --muted: #6a6f76;
+  --border: #e7e5e1;
+  --accent: #9b3d27;
+
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Dark colors, used when the visitor's system is in dark mode
+   (unless they picked light with the button)... */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161514;
+    --text: #e9e7e3;
+    --muted: #a29e98;
+    --border: #2d2b28;
+    --accent: #e59a82;
+  }
+}
+
+/* ...or when they pick dark with the button. Keep these two blocks the same. */
+:root[data-theme="dark"] {
+  --bg: #161514;
+  --text: #e9e7e3;
+  --muted: #a29e98;
+  --border: #2d2b28;
+  --accent: #e59a82;
+  color-scheme: dark;
+}
+:root[data-theme="light"] { color-scheme: light; }
+
+/* ==========================================================
+   Base
+   ========================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3 { margin: 0; line-height: 1.25; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.muted { color: var(--muted); }
+
+/* ==========================================================
+   Layout: profile on the left, content on the right
+   ========================================================== */
+.layout {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 80px;
+}
+
+/* ---- Profile column ---- */
+.profile { position: sticky; top: 0; align-self: start; padding: 56px 0 40px; }
+
+.photo {
+  width: 160px; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  border-radius: 8px; margin-bottom: 20px;
+}
+.profile h1 { font-family: var(--serif); font-size: 1.55rem; font-weight: 600; }
+.role { margin-top: 8px; font-weight: 600; line-height: 1.4; }
+.profile .muted { margin-top: 2px; }
+.status { margin-top: 12px; color: var(--muted); font-size: 0.94rem; }
+
+.links { list-style: none; margin-top: 20px; display: flex; flex-wrap: wrap; gap: 2px 16px; }
+
+.toc {
+  margin-top: 28px; padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: grid; gap: 2px;
+}
+.toc a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+.toc a:hover { color: var(--text); }
+
+/* ---- Content column ---- */
+.content { padding: 56px 0 48px; min-width: 0; }
+
+.content section { padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid var(--border); }
+.content section:last-of-type { border-bottom: 0; margin-bottom: 0; }
+
+.content h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; margin-bottom: 24px; }
+.content h2.subhead { margin-top: 48px; }
+
+#about p + p { margin-top: 16px; }
+.lead { font-size: 1.15rem; }
+
+.focus-list { list-style: none; margin-top: 28px; display: grid; gap: 14px; }
+.focus-list h3 { font-size: 1rem; font-weight: 600; }
+.focus-list p { color: var(--muted); }
+
+/* ---- Entries: experience, leadership, education ---- */
+.timeline { list-style: none; display: grid; gap: 32px; }
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "body meta";
+  column-gap: 24px;
+}
+.entry-body { grid-area: body; }
+.entry-meta {
+  grid-area: meta;
+  display: flex; flex-direction: column;
+  text-align: right; white-space: nowrap;
+  color: var(--muted); font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+}
+.entry-body h3 { font-size: 1.05rem; font-weight: 600; }
+.org { color: var(--muted); margin-top: 2px; }
+.entry-body > p:not(.org) { margin-top: 8px; }
+.entry-body > ul:not(.tags) { margin-top: 10px; padding-left: 20px; }
+.entry-body > ul:not(.tags) li + li { margin-top: 4px; }
+
+/* Tags shown as one quiet line: Python · SQL · ... */
+.tags { list-style: none; margin-top: 10px; display: flex; flex-wrap: wrap; color: var(--muted); font-size: 0.9rem; }
+.tags li:not(:last-child)::after { content: "·"; margin: 0 8px; }
+
+/* ---- Projects ---- */
+.project-list { display: grid; gap: 36px; }
+.kicker { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.project h3 { font-size: 1.1rem; font-weight: 600; margin: 4px 0 8px; }
+.project-links { margin-top: 10px; font-weight: 600; }
+.project-links .sep { margin: 0 8px; color: var(--muted); font-weight: 400; }
+
+/* ---- Awards ---- */
+.awards { list-style: none; display: grid; gap: 16px; }
+.awards li { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 16px; }
+.awards .year { color: var(--muted); font-variant-numeric: tabular-nums; }
+.awards h3 { font-size: 1rem; font-weight: 600; }
+.awards p { color: var(--muted); }
+
+/* ---- Skills ---- */
+.skills { margin: 0; display: grid; gap: 12px; }
+.skill-group { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; }
+.skill-group dt { font-weight: 600; }
+.skill-group dd { margin: 0; }
+
+.site-footer { color: var(--muted); font-size: 0.9rem; margin-top: 48px; }
+
+/* ---- Light/dark button in the top-right corner ---- */
+.theme-toggle {
+  position: fixed; top: 16px; right: 16px; z-index: 10;
+  width: 38px; height: 38px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--bg); color: var(--muted);
+  border: 1px solid var(--border); cursor: pointer;
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--muted); }
+.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Show the moon in light mode and the sun in dark mode */
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
+
+/* ==========================================================
+   Short laptop screens: let the profile scroll with the page
+   ========================================================== */
+@media (max-height: 760px) {
+  .profile { position: static; }
+}
+
+/* ==========================================================
+   Tablets and phones: profile on top, content below
+   ========================================================== */
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; gap: 0; padding: 0 24px; }
+  .profile { position: static; padding: 40px 0 32px; border-bottom: 1px solid var(--border); }
+  .photo { width: 140px; }
+  .toc { display: none; }
+  .content { padding-top: 40px; }
+}
+
+@media (max-width: 560px) {
+  .layout { padding: 0 16px; }
+  .entry { grid-template-columns: 1fr; grid-template-areas: "meta" "body"; }
+  .entry-meta { flex-direction: row; flex-wrap: wrap; gap: 0 12px; text-align: left; white-space: normal; margin-bottom: 2px; }
+  .skill-group { grid-template-columns: 1fr; gap: 0; }
+  .content section { padding-bottom: 40px; margin-bottom: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
