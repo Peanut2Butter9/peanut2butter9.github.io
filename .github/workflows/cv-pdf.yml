@@ -1,0 +1,58 @@
+# Rebuilds assets/Moh-Hasbi-Alfarizi-CV.pdf whenever cv-pdf.html changes,
+# so the PDF on the website always matches. It runs on GitHub's servers after
+# every push (also edits made on github.com), and can be started by hand from
+# the Actions tab ("Update CV PDF" -> "Run workflow").
+name: Update CV PDF
+
+on:
+  push:
+    branches: [main]
+    paths: [cv-pdf.html]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: cv-pdf
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Arial (the CV's font)
+        run: |
+          echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | sudo debconf-set-selections
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ttf-mscorefonts-installer fonts-liberation2 \
+            || sudo apt-get install -y -qq fonts-liberation2
+          fc-match Arial
+
+      - name: Print cv-pdf.html to PDF with Chrome
+        run: |
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)
+          "$CHROME" --headless --no-sandbox --disable-gpu --no-pdf-header-footer \
+            --print-to-pdf=assets/Moh-Hasbi-Alfarizi-CV.pdf "file://$PWD/cv-pdf.html"
+
+      - name: Bump the ?v= number in cv.html so browsers skip the old PDF
+        run: perl -pi -e 's/(Moh-Hasbi-Alfarizi-CV\.pdf\?v=)(\d+)/$1.($2+1)/e' cv.html
+
+      - name: Commit the new PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/Moh-Hasbi-Alfarizi-CV.pdf cv.html
+          git commit -m "Update CV PDF from cv-pdf.html"
+          git pull --rebase
+          git push
+
+      # Commits pushed by this workflow do not always start a Pages build on
+      # their own, so ask for one explicitly.
+      - name: Publish the new commit on GitHub Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
