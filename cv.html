@@ -3,279 +3,424 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CV - Moh Hasbi Alfarizi</title>
+  <title>CV | Moh Hasbi Alfarizi</title>
+  <meta name="description" content="Portfolio of Moh Hasbi Alfarizi, a Mathematics graduate from Universitas Gadjah Mada working on data, machine learning and AI.">
+  <meta name="author" content="Moh Hasbi Alfarizi">
+  <meta name="color-scheme" content="light dark">
 
-  <!--
-    Source of assets/Moh-Hasbi-Alfarizi-CV.pdf.
-    After editing: open this file in Chrome, press Cmd + P, choose "Save as PDF",
-    turn off "Headers and footers", and save over assets/Moh-Hasbi-Alfarizi-CV.pdf.
-  -->
-  <style>
-    @page { size: Letter; margin: 0.5in; }
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10pt;
-      line-height: 1.31;
-      color: #000;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    p, ul, h1, h2 { margin: 0; }
-
-    /* ---- Header ---- */
-    h1 { text-align: center; font-size: 18pt; font-weight: 700; }
-    .contact { text-align: center; margin-top: 4pt; }
-    .contact a { color: #1155cc; text-decoration: underline; }
-    .summary { margin-top: 14pt; text-align: justify; }
-
-    /* ---- Sections ---- */
-    h2 {
-      font-size: 12pt; font-weight: 700;
-      margin-top: 14pt; padding-bottom: 3pt;
-      border-bottom: 1.5pt solid #000;
-      break-after: avoid;
-    }
-    .entry { margin-top: 12pt; break-inside: avoid; }
-    .entry-head { display: flex; justify-content: space-between; gap: 12pt; }
-    .entry-head .title { font-weight: 700; }
-    .entry-head .where { font-weight: 700; color: #999; }
-    .entry-head .date { white-space: nowrap; }
-    .role { font-style: italic; }
-    .desc { text-align: justify; }
-
-    /* Bullets like Google Docs: dot at the margin, text indented 0.25in */
-    ul { list-style: none; padding: 0; }
-    li { position: relative; padding-left: 0.25in; text-align: justify; }
-    li::before { content: "\25CF"; position: absolute; left: 0; }
-    .skills { margin-top: 12pt; }
-
-    /* On screen, show it like a sheet of paper */
-    @media screen {
-      html { background: #e9e9e9; }
-      body { max-width: 7.5in; margin: 24px auto; padding: 0.5in; background: #fff; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15); }
-    }
-  </style>
+  <!-- Apply the saved light/dark choice before the page paints -->
+  <script>
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  </script>
 </head>
 <body>
+  <!-- ============ NAVIGATION (top bar, same on every page) ============ -->
+  <header class="site-nav">
+    <nav class="nav-inner" aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="cv.html" aria-current="page">CV</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="misc.html">Miscellaneous</a></li>
+      </ul>
+      <button class="theme-toggle" type="button" aria-label="Switch light/dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      </button>
+    </nav>
+  </header>
 
-  <!-- ============ HEADER ============ -->
-  <h1>MOH HASBI ALFARIZI</h1>
-  <p class="contact">
-    <a href="mailto:hasbialfrz61@gmail.com">hasbialfrz61@gmail.com</a> |
-    <a href="https://www.linkedin.com/in/mhasbiarz">linkedin.com/in/mhasbiarz</a> |
-    <a href="https://github.com/Peanut2Butter9">github.com/Peanut2Butter9</a> |
-    <a href="https://peanut2butter9.github.io">peanut2butter9.github.io</a>
-  </p>
-  <p class="summary">
-    Fresh graduate in Mathematics from Universitas Gadjah Mada, with research experience at Institute of Science Tokyo
-    (YSEP) and Polymath Jr. 2025. I am also working with machine learning models and artificial intelligence projects. During
-    my studies, I led large teams: as vice chairman of a national mathematics competition with 4,000+ participants, and as
-    education coordinator during community service on a remote island.
-  </p>
+  <div class="layout">
 
-  <!-- ============ EDUCATION ============ -->
-  <h2>Education</h2>
+    <!-- ============ PROFILE (left column, same on every page) ============ -->
+    <aside class="profile">
+      <img class="photo" src="assets/img/profile.jpg" width="800" height="1000" alt="Portrait of Moh Hasbi Alfarizi">
+      <p class="name">Moh Hasbi Alfarizi</p>
+      <p class="role">Data · Machine Learning · AI</p>
+      <p class="muted">Yogyakarta, Indonesia</p>
+      <p class="status">Open to roles in data, ML &amp; AI</p>
 
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Institute of Science Tokyo (formerly Tokyo Tech)</span> <span class="where">- Japan</span></p>
-      <p class="date">Apr 2026 - Aug 2026</p>
-    </div>
-    <p class="role">Young Science and Engineering Researchers Program (YSEP) - Research Student of Purkait’s Laboratory</p>
-    <ul>
-      <li>Learning a higher level of modular forms for the congruence subgroup and their connection to the elliptic curves under the supervision of Professor Yuichiro Taguchi and Associate Professor Dr. Soma Purkait.</li>
-    </ul>
+      <ul class="links">
+        <li><a href="mailto:hasbialfrz61@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/mhasbiarz" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Peanut2Butter9" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://huggingface.co/peanut2butter9" target="_blank" rel="noopener">Hugging Face</a></li>
+        <li><a href="https://www.instagram.com/mhasbi_alfarizi/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+
+      <nav class="toc" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+
+      <!-- ============ PAGE TITLE ============ -->
+      <h1 class="page-title">CV</h1>
+      <p class="pdf-note">The PDF version of my CV is available <a href="assets/Moh-Hasbi-Alfarizi-CV.pdf" target="_blank" rel="noopener">here ↗</a>.</p>
+
+      <!-- ============ ABOUT ============ -->
+      <section id="about">
+        <h2>About</h2>
+        <p class="lead">
+          Fresh graduate in Mathematics from Universitas Gadjah Mada, with research experience at
+          Institute of Science Tokyo (YSEP) and Polymath Jr. 2025. I am currently interested in machine
+          learning and artificial intelligence. So far I have built projects ranging from anomaly
+          detection for manufacturing to AI system that answers questions about scientific
+          papers and cites its sources.
+        </p>
+        <p>
+          During my studies I led large teams: as vice chairman of a national mathematics competition
+          with 4,000+ participants, and as education coordinator during community service on a remote island.
+        </p>
+        <ul class="focus-list">
+          <li>
+            <h3>Data &amp; Machine Learning</h3>
+            <p>Building and comparing models, from industrial anomaly detection to classical statistical classifiers.</p>
+          </li>
+          <li>
+            <h3>AI &amp; LLM Applications</h3>
+            <p>Learning retrieval-augmented generation: systems that answer from documents, cite their sources and decline when the answer is not there.</p>
+          </li>
+          <li>
+            <h3>Mathematics &amp; Teaching</h3>
+            <p>A background in statistics, numerical methods and modeling, and experience as a teaching assistant for 7 courses.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ EXPERIENCE ============ -->
+      <section id="experience">
+        <h2>Experience</h2>
+        <ol class="timeline">
+          <li class="entry">
+            <div class="entry-meta">
+              <span>Apr 2026 – Aug 2026</span>
+              <span>Tokyo, Japan</span>
+            </div>
+            <div class="entry-body">
+              <h3>Research Student, Purkait Laboratory</h3>
+              <p class="org">Institute of Science Tokyo · Young Science and Engineering Researchers Program (YSEP)</p>
+              <ul>
+                <li>Studied modular forms for congruence subgroups and their connection to elliptic curves.</li>
+                <li>Supervised by Prof. Yuichiro Taguchi and Assoc. Prof. Soma Purkait.</li>
+              </ul>
+              <ul class="tags"><li>Number Theory</li><li>Modular Forms</li><li>Elliptic Curves</li></ul>
+            </div>
+          </li>
+
+          <li class="entry">
+            <div class="entry-meta">
+              <span>2025</span>
+              <span>Online</span>
+            </div>
+            <div class="entry-body">
+              <h3>Undergraduate Researcher, Probability and Number Theory Research Group</h3>
+              <p class="org">Polymath Jr. 2025</p>
+              <ul>
+                <li>Studied a method for detecting prime numbers with MacMahon’s partition functions and analyzed their congruences.</li>
+                <li>Supervised by Dr. William Craig (United States Naval Academy).</li>
+              </ul>
+              <ul class="tags"><li>Integer Partitions</li><li>Number Theory</li><li>Collaborative Research</li></ul>
+            </div>
+          </li>
+
+          <li class="entry">
+            <div class="entry-meta">
+              <span>Several semesters</span>
+              <span>Yogyakarta, Indonesia</span>
+            </div>
+            <div class="entry-body">
+              <h3>Lecturer &amp; Practicum Assistant</h3>
+              <p class="org">Department of Mathematics, Universitas Gadjah Mada</p>
+              <ul>
+                <li><strong>Lecturer assistant:</strong> Calculus I, Advanced Calculus, Introduction to Real Analysis, Multivariable Calculus.</li>
+                <li><strong>Practicum assistant:</strong> Introduction to Numerical Analysis, Computational Mathematics, Numerical Linear Algebra.</li>
+              </ul>
+              <ul class="tags"><li>Teaching</li><li>Numerical Methods</li><li>Analysis</li></ul>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-list">
+          <article class="project">
+            <p class="kicker">AI / LLM · 2026, in progress</p>
+            <h3>ScholarRAG: Question Answering over Scientific Papers</h3>
+            <p>
+              A retrieval-augmented system that answers questions about 200 arXiv papers on visual
+              anomaly detection. Every answer has to quote the passage it comes from, and the system
+              declines when the papers do not contain the answer. Retrieval combines BM25 and dense
+              search with a cross-encoder reranker, and Gemini writes the answer. In tests so far it
+              declined all 20 unanswerable questions, and 76 of 77 quotes matched the source exactly.
+            </p>
+            <ul class="tags"><li>Python</li><li>RAG</li><li>BM25</li><li>Sentence Transformers</li><li>Reranking</li><li>Gemini API</li><li>FastAPI</li></ul>
+          </article>
+
+          <article class="project">
+            <p class="kicker">Machine Learning · 2025, rebuilt 2026</p>
+            <h3>AnoDe: Anomaly Detection Platform for Manufacturing</h3>
+            <p>
+              A quality-control platform that selects a suitable model for each product to detect both
+              visual defects (scratches, dents) and logical defects (missing or misplaced parts). I rebuilt
+              our team’s capstone project, compared several models on MVTec AD and MVTec LOCO, and deployed
+              a live demo. Best image-level AUROC on MVTec AD: <strong>0.982</strong> (PatchCore).
+            </p>
+            <ul class="tags"><li>PyTorch</li><li>PatchCore</li><li>CSAD</li><li>Computer Vision</li><li>Kaggle GPU</li></ul>
+            <p class="project-links">
+              <a href="https://huggingface.co/spaces/peanut2butter9/anode" target="_blank" rel="noopener">Live demo ↗</a>
+              <span class="sep" aria-hidden="true">·</span>
+              <a href="https://github.com/Peanut2Butter9/anode" target="_blank" rel="noopener">Code on GitHub ↗</a>
+            </p>
+          </article>
+
+          <article class="project">
+            <p class="kicker">Statistics · 2024</p>
+            <h3>Breast Cancer Classification with LDA/QDA</h3>
+            <p>
+              Compared and validated Linear and Quadratic Discriminant Analysis for classifying breast
+              cancer cells from a public dataset. Team project for Introduction to Mathematical Modelling.
+            </p>
+            <ul class="tags"><li>Python</li><li>scikit-learn</li><li>Classification</li><li>Statistics</li></ul>
+            <p class="project-links"><a href="https://github.com/Peanut2Butter9/breast-cancer-lda-qda" target="_blank" rel="noopener">Code on GitHub ↗</a></p>
+          </article>
+
+          <article class="project">
+            <p class="kicker">Operations Research · 2024, reproduced 2026</p>
+            <h3>Open Jackson Queueing Network in a Hospital</h3>
+            <p>Modeled hospital patient flow as an open Jackson network and derived the equations used to analyze and improve operational efficiency. In 2026 I recomputed every number in Python and checked the model three independent ways.</p>
+            <ul class="tags"><li>Queueing Theory</li><li>Modeling</li><li>Python</li></ul>
+            <p class="project-links"><a href="https://github.com/Peanut2Butter9/open-jackson" target="_blank" rel="noopener">Code on GitHub ↗</a></p>
+          </article>
+
+          <article class="project">
+            <p class="kicker">Dynamical Systems · 2024, reproduced 2026</p>
+            <h3>Stability of the Belousov–Zhabotinsky Reaction</h3>
+            <p>Analyzed stability and Hopf bifurcations of the Oregonator model to predict when this chemical reaction starts to oscillate. In 2026 I redid the analysis and simulations in Python and corrected the oscillation range.</p>
+            <ul class="tags"><li>ODEs</li><li>Bifurcation</li><li>Python</li></ul>
+            <p class="project-links"><a href="https://github.com/Peanut2Butter9/oregonator" target="_blank" rel="noopener">Code on GitHub ↗</a></p>
+          </article>
+
+          <article class="project">
+            <p class="kicker">Number Theory · Bachelor’s thesis, 2026</p>
+            <h3>Thesis: Prime-Detecting Quasimodular Forms</h3>
+            <p>Bachelor’s thesis on quasimodular forms whose coefficients vanish exactly at the primes, with a computer search for congruences that are then proved.</p>
+            <ul class="tags"><li>Modular Forms</li><li>SageMath</li><li>Research</li></ul>
+            <p class="project-links">
+              <a href="https://etd.repository.ugm.ac.id/penelitian/detail/286166" target="_blank" rel="noopener">Read the thesis ↗</a>
+              <span class="sep" aria-hidden="true">·</span>
+              <a href="https://github.com/Peanut2Butter9/thesis" target="_blank" rel="noopener">Code on GitHub ↗</a>
+            </p>
+          </article>
+
+          <!-- <article class="project">
+            <p class="kicker">Combinatorics · 2023</p>
+            <h3>Generalizing an m-ary Partition Function</h3>
+            <p>Extended a classic Putnam problem into a general framework for m-ary integer partitions using generating functions.</p>
+            <ul class="tags"><li>Generating Functions</li><li>Partitions</li></ul>
+          </article> -->
+        </div>
+      </section>
+
+      <!-- ============ LEADERSHIP ============ -->
+      <section id="leadership">
+        <h2>Leadership &amp; Volunteering</h2>
+        <ol class="timeline">
+          <li class="entry">
+            <div class="entry-meta">
+              <span>Jun 2025 – Aug 2025</span>
+              <span>Talaud Islands, North Sulawesi</span>
+            </div>
+            <div class="entry-body">
+              <h3>Coordinator of the Education Sector</h3>
+              <p class="org">KKN-PPM UGM (Community Service)</p>
+              <ul>
+                <li>Coordinated about 25 education programs addressing local challenges.</li>
+                <li>Taught elementary to high school students and ran training workshops for local teachers.</li>
+                <li>Wrote and presented a policy brief to the Talaud Islands government with data-informed proposals.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="entry">
+            <div class="entry-meta">
+              <span>Feb 2024 – Nov 2024</span>
+              <span>Yogyakarta</span>
+            </div>
+            <div class="entry-body">
+              <h3>Vice Chairman</h3>
+              <p class="org">LMNas 35 &amp; Semnastika 16 UGM, a national math competition and seminar</p>
+              <ul>
+                <li>Reached 4,000+ participating students nationwide, with 100+ committee members.</li>
+                <li>Oversaw 4 divisions (Creative, Events, Problem Creator, Business Fund) with almost no major operational issues.</li>
+                <li>Grew Instagram followers by 175%, reached about one million views across Instagram and TikTok, and raised about IDR 50 million from business funds.</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- <li class="entry">
+            <div class="entry-meta">
+              <span>Jul 2023 – Jan 2024</span>
+              <span>Yogyakarta</span>
+            </div>
+            <div class="entry-body">
+              <h3>Vice Chairman</h3>
+              <p class="org">Matriks 2023, Himatika UGM</p>
+              <ul>
+                <li>Led 70+ committee members and met 100% of project deadlines.</li>
+                <li>Supervised 3 divisions and reached 100% of the funding target.</li>
+              </ul>
+            </div>
+          </li> -->
+
+          <!-- <li class="entry">
+            <div class="entry-meta">
+              <span>Nov 2022 – Jan 2024</span>
+              <span>Yogyakarta</span>
+            </div>
+            <div class="entry-body">
+              <h3>Staff, Human Resource Development &amp; Community Development</h3>
+              <p class="org">Himatika UGM (2023) · Science Study Community FMIPA UGM (2022–2024)</p>
+              <ul>
+                <li>Ran bonding activities, freshman training and member evaluations for the mathematics student association.</li>
+                <li>Ran sustainable development programs in partner villages.</li>
+              </ul>
+            </div>
+          </li> -->
+        </ol>
+      </section>
+
+      <!-- ============ EDUCATION & AWARDS ============ -->
+      <section id="education">
+        <h2>Education</h2>
+        <ol class="timeline">
+          <li class="entry">
+            <div class="entry-meta">
+              <span>Aug 2022 – 2026</span>
+              <span>Yogyakarta, Indonesia</span>
+            </div>
+            <div class="entry-body">
+              <h3>Universitas Gadjah Mada</h3>
+              <p class="org">Bachelor of Science in Mathematics · GPA 3.77 / 4.00</p>
+              <p>Thesis: <a href="https://etd.repository.ugm.ac.id/penelitian/detail/286166" target="_blank" rel="noopener">Prime-Detecting Quasimodular Forms and Some of Their Congruence Properties</a></p>
+            </div>
+          </li>
+
+          <li class="entry">
+            <div class="entry-meta">
+              <span>Apr 2026 – Aug 2026</span>
+              <span>Tokyo, Japan</span>
+            </div>
+            <div class="entry-body">
+              <h3>Institute of Science Tokyo</h3>
+              <p class="org">Exchange research student, YSEP</p>
+            </div>
+          </li>
+        </ol>
+
+        <h2 class="subhead">Awards</h2>
+        <ul class="awards">
+          <li>
+            <span class="year">2025</span>
+            <div>
+              <h3>Silver Medal (individual)</h3>
+              <p>Mathematical Analysis and Geometry Day XVI (MaG-D XVI), Institut Teknologi Bandung</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2024</span>
+            <div>
+              <h3>UGM Delegate, Statistics Infographic Competition</h3>
+              <p>Satria Data 2024, Pusat Prestasi Nasional (Puspresnas)</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2024</span>
+            <div>
+              <h3>UGM Delegate, Statistics Essay Competition</h3>
+              <p>Satria Data 2024, Pusat Prestasi Nasional (Puspresnas)</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2023</span>
+            <div>
+              <h3>Silver Medal (team), Calculus Paper Competition</h3>
+              <p>SNAMA 2023, Universitas Sebelas Maret</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ SKILLS ============ -->
+      <section id="skills">
+        <h2>Skills</h2>
+        <dl class="skills">
+          <div class="skill-group">
+            <dt>Programming</dt>
+            <dd>Python, C++, LaTeX, Git &amp; GitHub</dd>
+          </div>
+          <div class="skill-group">
+            <dt>Data &amp; ML</dt>
+            <dd>PyTorch, scikit-learn, NumPy &amp; pandas, Jupyter &amp; Kaggle, Hugging Face, SageMath</dd>
+          </div>
+          <div class="skill-group">
+            <dt>AI &amp; LLM</dt>
+            <dd>RAG, BM25 &amp; dense retrieval, Sentence Transformers, Gemini API, FastAPI</dd>
+          </div>
+          <div class="skill-group">
+            <dt>Mathematics</dt>
+            <dd>Mathematical Modeling, Statistics, Numerical Analysis, Dynamical Systems, Number Theory</dd>
+          </div>
+          <div class="skill-group">
+            <dt>Design &amp; Office</dt>
+            <dd>Figma, Canva, CapCut, Microsoft Office</dd>
+          </div>
+          <div class="skill-group">
+            <dt>Languages</dt>
+            <dd>Indonesian (native), English (TOEFL ITP 567), Japanese (basic)</dd>
+          </div>
+          <div class="skill-group">
+            <dt>Soft skills</dt>
+            <dd>Teaching, Leadership, Public Speaking, Problem Solving</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          I’m open to roles in data, machine learning and AI.
+          Email me at <a href="mailto:hasbialfrz61@gmail.com">hasbialfrz61@gmail.com</a>
+          or message me on <a href="https://www.linkedin.com/in/mhasbiarz" target="_blank" rel="noopener">LinkedIn</a>.
+        </p>
+      </section>
+
+      <footer class="site-footer">
+        <p>© 2026 Moh Hasbi Alfarizi · Hosted on GitHub Pages</p>
+      </footer>
+    </main>
+
   </div>
 
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Universitas Gadjah Mada (UGM)</span> <span class="where">- Indonesia</span></p>
-      <p class="date">Aug 2022 - Aug 2026</p>
-    </div>
-    <p><span class="role">Bachelor’s Degree in Mathematics</span> (GPA: 3.77/4.00)</p>
-    <p>Thesis Title: <a href="https://etd.repository.ugm.ac.id/penelitian/detail/286166">Prime-Detecting Quasimodular Forms and Some of Their Congruence Properties.</a></p>
-    <ul>
-      <li>Lecturer Assistant of the Calculus I Course.</li>
-      <li>Lecturer Assistant of the Advanced Calculus Course.</li>
-      <li>Lecturer Assistant of the Introduction to Real Analysis Course.</li>
-      <li>Lecturer Assistant of the Multivariable Calculus Course.</li>
-      <li>Practicum Assistant of the Introduction to Numerical Analysis Course.</li>
-      <li>Practicum Assistant of the Computational Mathematics Course.</li>
-      <li>Practicum Assistant of the Numerical Linear Algebra.</li>
-    </ul>
-  </div>
-
-  <!-- ============ SELECTED PROJECTS ============ -->
-  <h2>Selected Projects</h2>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Integer Partitions Detect the Primes</span> <span class="where">- Polymath Jr. 2025</span></p>
-      <p class="date">2025</p>
-    </div>
-    <p class="desc">Learning a method for detecting prime numbers and analyzing congruences within MacMahon’s partition function under the supervision of Dr. William Craig of the United States Naval Academy.</p>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><a class="title" href="https://github.com/Peanut2Butter9/anode">AnoDe: Anomaly Detection Platform for Manufacturing</a> <span class="where">- Course Project, Machine Learning</span></p>
-      <p class="date">2025</p>
-    </div>
-    <p class="desc">Engineered an automated anomaly detection platform that dynamically selects optimal ML models (e.g., PatchCore, CSAD) to identify both visual and logical defects in manufacturing accurately.</p>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><a class="title" href="https://github.com/Peanut2Butter9/breast-cancer-lda-qda">Breast Cancer Classification with LDA/QDA</a> <span class="where">- Course Project, Intro to Mathematical Modelling</span></p>
-      <p class="date">2024</p>
-    </div>
-    <p class="desc">Compared and validated Linear and Quadratic Discriminant Analysis models to accurately classify breast cancer cells from a public dataset.</p>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><a class="title" href="https://github.com/Peanut2Butter9/open-jackson">Open Jackson Queueing Network in a Hospital System</a> <span class="where">- Course Project, Queueing Theory</span></p>
-      <p class="date">2024</p>
-    </div>
-    <p class="desc">Developed a mathematical model of hospital patient flow using the Open Jackson network to derive equations for analyzing and improving operational efficiency.</p>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><a class="title" href="https://github.com/Peanut2Butter9/oregonator">Stability Analysis of Belousov-Zhabotinsky Reaction</a> <span class="where">- Course Project, Dynamical System</span></p>
-      <p class="date">2024</p>
-    </div>
-    <p class="desc">Applied dynamical systems principles to analyze the stability and bifurcation of the Oregonator model, predicting the behavior of an oscillating chemical reaction.</p>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Generalization of an m-ary Partition Function</span> <span class="where">- Course Project, Intro to Integer Partitions</span></p>
-      <p class="date">2023</p>
-    </div>
-    <p class="desc">Extended a classic Putnam Competition problem by developing a generalized framework for m-ary integer partitions using generating functions.</p>
-  </div>
-
-  <!-- ============ SELECTED ACHIEVEMENTS ============ -->
-  <h2>Selected Achievements</h2>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Silver Medalist of Mathematical Analysis and Geometry Day XVI (MaG-D XVI)</span> <span class="where">- Indonesia</span></p>
-      <p class="date">2025</p>
-    </div>
-    <p class="desc">Achieved Silver Medal (Individually) in Mathematical Analysis and Geometry Day XVI (MaG-D XVI) 2025 held at Institut Teknologi Bandung (ITB).</p>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Delegation for Statistics Infographic Competition Satria Data 2024</span> <span class="where">- Indonesia</span></p>
-      <p class="date">2024</p>
-    </div>
-    <p class="desc">Delegation of the Universitas Gadjah Mada for Statistics Infographic Competition (SIC) Satria Data 2024 held by Pusat Prestasi Nasional (Puspresnas).</p>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Delegation for Statistics Essay Competition Satria Data 2024</span> <span class="where">- Indonesia</span></p>
-      <p class="date">2024</p>
-    </div>
-    <p class="desc">Delegation of the Universitas Gadjah Mada for Statistics Essay Competition (SEC) Satria Data 2024 held by Pusat Prestasi Nasional (Puspresnas).</p>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Silver Medalist of Calculus Paper Competition</span> <span class="where">- Indonesia</span></p>
-      <p class="date">2023</p>
-    </div>
-    <p class="desc">Achieved Silver Medal (as a team) of the Calculus Paper Competition at SNAMA (Simposium Nasional Analisis Matematika dan Aplikasinya) 2023 held at the Universitas Sebelas Maret, Indonesia.</p>
-  </div>
-
-  <!-- ============ SELECTED VOLUNTEER EXPERIENCES ============ -->
-  <h2>Selected Volunteer Experiences</h2>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Talaud Island Community Service</span> <span class="where">- KKN-PPM UGM</span></p>
-      <p class="date">Jun 2025 - Aug 2025</p>
-    </div>
-    <p class="role">Coordinator of the Educational Sector</p>
-    <ul>
-      <li>Coordinated and executed approximately 25 educational programs aimed at addressing local educational challenges at Talaud Island, North Sulawesi, Indonesia.</li>
-      <li>Led teaching initiatives for elementary to high school students and provided training workshops for local teachers to enhance pedagogical skills.</li>
-      <li>Authored and presented a policy brief to the Talaud Islands' local government, outlining key educational problems and proposing data-informed solutions for systemic improvement.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">LMNas 35 &amp; Semnastika 16 UGM</span> <span class="where">- Himatika UGM</span></p>
-      <p class="date">Feb 2024 - Nov 2024</p>
-    </div>
-    <p class="role">Vice Chairman</p>
-    <ul>
-      <li>Achieved participation of 4,000+ students nationwide in the competition.</li>
-      <li>Successfully managed 100+ committee members, ensuring smooth event execution.</li>
-      <li>Oversaw 4 key divisions (Creative, Events, Problem Creator, and Business Fund), resulting in almost zero major operational issues.</li>
-      <li>Achieving a 175% increase in Instagram followers, a million total views on Social Media such as Instagram and TikTok content, a high-quality short-list competition problem made by a national and international maths medallist, and adding approximately 50 million IDR from business funds.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Matriks 2023 UGM</span> <span class="where">- Himatika UGM</span></p>
-      <p class="date">Jul 2023 - Jan 2024</p>
-    </div>
-    <p class="role">Vice Chairman</p>
-    <ul>
-      <li>Led 70+ committee members, streamlining workflows to meet 100% of project deadlines.</li>
-      <li>Co-created detailed job descriptions and timelines, reducing miscommunication by 28%.</li>
-      <li>Supervised 3 divisions (Creative, Medical-Consumption, and Business Fund), contributing to a 100% target funding.</li>
-    </ul>
-  </div>
-
-  <!-- ============ ORGANIZATIONAL EXPERIENCES ============ -->
-  <h2>Organizational Experiences</h2>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Himatika UGM (UGM Math Student Association)</span> <span class="where">- Indonesia</span></p>
-      <p class="date">Feb 2023 - Dec 2023</p>
-    </div>
-    <p class="role">Staff of the Human Resource Development</p>
-    <ul>
-      <li>Performed bonding activities for all members.</li>
-      <li>Provided training and development for freshmen.</li>
-      <li>Collected administrative data of members.</li>
-      <li>Conducted evaluations for organizations and members.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-head">
-      <p><span class="title">Science Study Community FMIPA UGM</span> <span class="where">- Indonesia</span></p>
-      <p class="date">Nov 2022 - Jan 2024</p>
-    </div>
-    <p class="role">Staff of the Community Development</p>
-    <ul>
-      <li>Conducting visits to the assisted villages and carrying out village development with sustainable programs.</li>
-      <li>Conducting internal training to prepare themselves to go into the community.</li>
-      <li>Have a discussion to find new insights related to service in partner villages.</li>
-    </ul>
-  </div>
-
-  <!-- ============ SKILLS AND OTHERS ============ -->
-  <h2>Skills and Others</h2>
-
-  <ul class="skills">
-    <li><strong>Languages</strong>: Bahasa Indonesia (Native); English (TOEFL ITP® 567 Overall); Japanese (basic).</li>
-    <li><strong>Soft Skills</strong>: Teaching, Leadership, Team Building, Problem Solving, Decision Making, Public Speaking, Interpersonal Skills, Critical Thinking.</li>
-    <li><strong>Hard Skills</strong>: Mathematical Modeling, Machine Learning Models, LaTex, Microsoft Office, Figma, Capcut, Canva, Python, C++.</li>
-  </ul>
-
+  <script src="assets/js/theme.js"></script>
 </body>
 </html>

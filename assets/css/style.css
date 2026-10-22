@@ -7,9 +7,11 @@
   --muted: #6a6f76;
   --border: #e7e5e1;
   --accent: #9b3d27;
+  --nav-bg: #ffffff;
 
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --nav-h: 56px;
 }
 
 /* Dark colors, used when the visitor's system is in dark mode
@@ -21,6 +23,7 @@
     --muted: #a29e98;
     --border: #2d2b28;
     --accent: #e59a82;
+    --nav-bg: #252321;
   }
 }
 
@@ -31,6 +34,7 @@
   --muted: #a29e98;
   --border: #2d2b28;
   --accent: #e59a82;
+  --nav-bg: #252321;
   color-scheme: dark;
 }
 :root[data-theme="light"] { color-scheme: light; }
@@ -40,10 +44,11 @@
    ========================================================== */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); scrollbar-gutter: stable; -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
+  padding-top: var(--nav-h);
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
@@ -62,6 +67,53 @@ ul, ol { margin: 0; padding: 0; }
 .muted { color: var(--muted); }
 
 /* ==========================================================
+   Top navigation bar (stays at the top while scrolling)
+   ========================================================== */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+  height: var(--nav-h);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1040px; height: 100%;
+  margin: 0 auto; padding: 0 32px;
+  display: flex; align-items: center;
+}
+.nav-links {
+  list-style: none; display: flex; gap: 32px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  display: block; padding: 4px 0;
+  color: var(--text); text-decoration: none; white-space: nowrap;
+  font-size: 1.05rem; border-bottom: 2px solid transparent;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a[aria-current="page"] { border-bottom-color: var(--accent); }
+
+/* Light/dark button, right after the menu */
+.theme-toggle {
+  flex-shrink: 0; margin-left: 24px;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: none; color: var(--text);
+  border: 0; cursor: pointer;
+}
+.theme-toggle:hover { color: var(--accent); }
+.theme-toggle svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Show the moon in light mode and the sun in dark mode */
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
+
+/* ==========================================================
    Layout: profile on the left, content on the right
    ========================================================== */
 .layout {
@@ -74,13 +126,13 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 /* ---- Profile column ---- */
-.profile { position: sticky; top: 0; align-self: start; padding: 56px 0 40px; }
+.profile { position: sticky; top: var(--nav-h); align-self: start; padding: 40px 0; }
 
 .photo {
   width: 160px; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
   border-radius: 8px; margin-bottom: 20px;
 }
-.profile h1 { font-family: var(--serif); font-size: 1.55rem; font-weight: 600; }
+.profile .name { font-family: var(--serif); font-size: 1.55rem; font-weight: 600; line-height: 1.25; }
 .role { margin-top: 8px; font-weight: 600; line-height: 1.4; }
 .profile .muted { margin-top: 2px; }
 .status { margin-top: 12px; color: var(--muted); font-size: 0.94rem; }
@@ -96,7 +148,11 @@ ul, ol { margin: 0; padding: 0; }
 .toc a:hover { color: var(--text); }
 
 /* ---- Content column ---- */
-.content { padding: 56px 0 48px; min-width: 0; }
+.content { padding: 40px 0 48px; min-width: 0; }
+
+.page-title { font-family: var(--serif); font-size: 2rem; font-weight: 600; margin-bottom: 16px; }
+.pdf-note { margin-bottom: 40px; }
+.placeholder { color: var(--muted); font-style: italic; margin-bottom: 8px; }
 
 .content section { padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid var(--border); }
 .content section:last-of-type { border-bottom: 0; margin-bottom: 0; }
@@ -106,7 +162,6 @@ ul, ol { margin: 0; padding: 0; }
 
 #about p + p { margin-top: 16px; }
 .lead { font-size: 1.15rem; }
-.cv-link { font-weight: 600; }
 
 .focus-list { list-style: none; margin-top: 28px; display: grid; gap: 14px; }
 .focus-list h3 { font-size: 1rem; font-weight: 600; }
@@ -161,26 +216,6 @@ ul, ol { margin: 0; padding: 0; }
 
 .site-footer { color: var(--muted); font-size: 0.9rem; margin-top: 48px; }
 
-/* ---- Light/dark button in the top-right corner ---- */
-.theme-toggle {
-  position: fixed; top: 16px; right: 16px; z-index: 10;
-  width: 38px; height: 38px; border-radius: 50%;
-  display: grid; place-items: center;
-  background: var(--bg); color: var(--muted);
-  border: 1px solid var(--border); cursor: pointer;
-}
-.theme-toggle:hover { color: var(--text); border-color: var(--muted); }
-.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-
-/* Show the moon in light mode and the sun in dark mode */
-.theme-toggle .icon-sun { display: none; }
-:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
-  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
-}
-
 /* ==========================================================
    Short laptop screens: let the profile scroll with the page
    ========================================================== */
@@ -192,14 +227,19 @@ ul, ol { margin: 0; padding: 0; }
    Tablets and phones: profile on top, content below
    ========================================================== */
 @media (max-width: 860px) {
+  .nav-inner { padding: 0 24px; }
   .layout { grid-template-columns: 1fr; gap: 0; padding: 0 24px; }
-  .profile { position: static; padding: 40px 0 32px; border-bottom: 1px solid var(--border); }
+  .profile { position: static; padding: 32px 0; border-bottom: 1px solid var(--border); }
   .photo { width: 140px; }
   .toc { display: none; }
   .content { padding-top: 40px; }
 }
 
 @media (max-width: 560px) {
+  .nav-inner { padding: 0 16px; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 0.98rem; }
+  .theme-toggle { margin-left: auto; }
   .layout { padding: 0 16px; }
   .entry { grid-template-columns: 1fr; grid-template-areas: "meta" "body"; }
   .entry-meta { flex-direction: row; flex-wrap: wrap; gap: 0 12px; text-align: left; white-space: normal; margin-bottom: 2px; }
