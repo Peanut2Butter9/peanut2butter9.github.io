@@ -227,13 +227,9 @@ ul, ol { margin: 0; padding: 0; }
 /* ---- Single project page ---- */
 .back-link { margin-bottom: 12px; font-size: 0.95rem; }
 .back-link a { text-decoration: none; }
-.download { margin: 20px 0 36px; }
-.button {
-  display: inline-block; padding: 9px 18px; border-radius: 8px;
-  border: 1px solid var(--accent); color: var(--accent);
-  font-weight: 600; text-decoration: none;
-}
-.button:hover { background: var(--accent); color: var(--bg); }
+.download { margin-top: 20px; }
+.update-log { margin: 10px 0 36px; padding-left: 22px; }
+.update-log li + li { margin-top: 4px; }
 
 .article p + p, .article p + ul, .article ul + p { margin-top: 14px; }
 .article ul { padding-left: 22px; margin-top: 12px; }
