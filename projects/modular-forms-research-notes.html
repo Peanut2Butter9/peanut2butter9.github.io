@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Notes on Modular Forms | Moh Hasbi Alfarizi</title>
+  <meta name="description" content="Portfolio of Moh Hasbi Alfarizi, a Mathematics graduate from Universitas Gadjah Mada working on data, machine learning and AI.">
+  <meta name="author" content="Moh Hasbi Alfarizi">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- Apply the saved light/dark choice before the page paints -->
+  <script>
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <!-- ============ NAVIGATION (top bar, same on every page) ============ -->
+  <header class="site-nav">
+    <nav class="nav-inner" aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="../index.html">Homepage</a></li>
+        <li><a href="../cv.html">CV</a></li>
+        <li><a href="../projects.html" aria-current="page">Projects</a></li>
+        <li><a href="../misc.html">Miscellaneous</a></li>
+      </ul>
+      <button class="theme-toggle" type="button" aria-label="Switch light/dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <div class="layout">
+
+    <!-- ============ PROFILE (left column, same on every page) ============ -->
+    <aside class="profile">
+      <img class="photo" src="../assets/img/profile.jpg?v=2" width="800" height="1000" alt="Portrait of Moh Hasbi Alfarizi">
+      <p class="name">Moh Hasbi Alfarizi</p>
+      <p class="role">Math · Machine Learning · AI</p>
+      <p class="muted">Yogyakarta, Indonesia</p>
+      <p class="status">aspiring verdictless human</p>
+
+      <ul class="links">
+        <li><a href="mailto:hasbialfrz61@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/mhasbiarz" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Peanut2Butter9" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://huggingface.co/peanut2butter9" target="_blank" rel="noopener">Hugging Face</a></li>
+        <li><a href="https://www.instagram.com/mhasbi_alfarizi/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </aside>
+
+    <main class="content">
+
+      <p class="back-link"><a href="../projects.html">← All projects</a></p>
+
+      <!-- ============ PAGE TITLE ============ -->
+      <h1 class="page-title">Research Notes on Modular Forms</h1>
+      <p class="post-meta">Published: October 22, 2026 · 139 pages</p>
+      <p class="download"><a class="button" href="../assets/projects/modular-forms/ModularForms-ResearchNotes.pdf" target="_blank" rel="noopener">Download the notes (PDF, 1.2 MB)</a></p>
+
+      <article class="article">
+
+        <!-- ============ ABOUT THE NOTES ============ -->
+        <p class="lead">
+          These are my research notes from April to August 2026, when I was a YSEP research student at
+          Institute of Science Tokyo, learning about modular forms under the supervision of Dr. Soma Purkait
+          and Prof. Yuichiro Taguchi. They started as a stack of handwritten notes, one “Note” per topic,
+          and I later typed them up into a single PDF. Chapter <em>k</em> of the PDF is my handwritten Note <em>k</em>.
+        </p>
+
+        <figure class="photo-figure portrait">
+          <img src="../assets/projects/modular-forms/seminar-whiteboard.jpg" width="900" height="1600" alt="Hasbi giving a thumbs up in front of blackboards full of modular forms calculations">
+          <figcaption>Right after one of our weekly Thursday seminar sessions.</figcaption>
+        </figure>
+
+        <h2>What’s inside</h2>
+        <p>
+          The goal was to understand <strong>Hecke operators</strong>: how they act on modular forms for
+          Γ<sub>0</sub>(N), and why they give us eigenforms whose Fourier coefficients are multiplicative.
+          Getting there was quite a journey:
+        </p>
+        <ul>
+          <li>the Riemann zeta function, its analytic continuation and functional equation, through the Gamma function, the Mellin and Fourier transforms, Poisson summation and the theta function (the blueprint for many arguments later on);</li>
+          <li>elliptic curves and elliptic functions, including the Weierstrass ℘-function;</li>
+          <li>the modular group, congruence subgroups and fundamental domains;</li>
+          <li>modular forms of level 1: Eisenstein series, the valence formula, the <em>j</em>-invariant and Δ;</li>
+          <li>growth of Fourier coefficients and cusp forms;</li>
+          <li>modular forms of congruence subgroups and their properties;</li>
+          <li>Jacobi’s four squares theorem, as a fun application;</li>
+          <li>and finally the Hecke algebra and the Hecke operators for Γ<sub>0</sub>(N).</li>
+        </ul>
+        <p>
+          Most of the material follows Dr. Purkait’s lecture notes from the modular forms course she taught a
+          few years ago, together with Koblitz’s book, with some help from Diamond–Shurman and Serre.
+        </p>
+
+        <h2>Why start with the zeta function and elliptic curves?</h2>
+        <p>
+          Honestly, the original plan was more ambitious: go from modular forms to their <em>L</em>-functions,
+          and from elliptic curves to the modularity theorem. The first two chapters were my warm-up for that.
+          The research period ended before I got there, so the notes stop at Hecke operators. Maybe next time!
+        </p>
+
+        <h2>How these notes were made</h2>
+        <p>
+          In my handwritten notes, a lot of things were only announced (“we can show…”, “exactly like in the
+          book”) and some proofs were left blank. I filled most of them in afterwards. Typing the handwriting
+          into LaTeX, along with several of the proofs and corrections, was done with the help of Claude Code.
+          While reading, you will find two kinds of boxes:
+        </p>
+        <ul>
+          <li><strong>Notes</strong> make precise the things that were vague or left implicit in my handwriting;</li>
+          <li><strong>Correction</strong> boxes point out where my handwritten notes had a slip, and what the correct statement is.</li>
+        </ul>
+        <p>
+          Big shout-out to <a href="https://orlandoferrari.github.io" target="_blank" rel="noopener">Orlando Ferrari’s lecture notes project</a>,
+          which inspired the way I made and wrote up these notes.
+        </p>
+        <p>
+          Please read with a pencil nearby and double-check the calculations; any mistakes left are mine.
+          If you spot one or have a suggestion, feel free to reach out on
+          <a href="https://github.com/Peanut2Butter9" target="_blank" rel="noopener">GitHub</a>.
+        </p>
+
+        <!-- ============ THANK YOU ============ -->
+        <h2>Thank you</h2>
+        <figure class="photo-figure">
+          <img src="../assets/projects/modular-forms/with-supervisors.jpg" width="1600" height="900" alt="Dr. Soma Purkait, Hasbi and Prof. Yuichiro Taguchi standing together outside a building">
+          <figcaption>With Dr. Soma Purkait (left) and Prof. Yuichiro Taguchi (right).</figcaption>
+        </figure>
+        <p>
+          I am very grateful to Dr. Soma Purkait for accepting me as a research student under her supervision,
+          and for all her guidance throughout this project. I would also like to thank Prof. Yuichiro Taguchi
+          for formally taking me under his name in the YSEP program, which made this research stay possible in
+          the first place.
+        </p>
+
+      </article>
+
+      <footer class="site-footer">
+        <p>© 2026 Moh Hasbi Alfarizi · Hosted on GitHub Pages</p>
+      </footer>
+    </main>
+
+  </div>
+
+  <script src="../assets/js/theme.js"></script>
+</body>
+</html>
