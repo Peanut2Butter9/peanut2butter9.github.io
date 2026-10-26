@@ -197,16 +197,22 @@
         <h2>Projects</h2>
         <div class="project-list">
           <article class="project">
-            <p class="kicker">AI / LLM · 2026, in progress</p>
+            <p class="kicker">AI / LLM · 2026</p>
             <h3>ScholarRAG: Question Answering over Scientific Papers</h3>
             <p>
               A retrieval-augmented system that answers questions about 200 arXiv papers on visual
-              anomaly detection. Every answer has to quote the passage it comes from, and the system
-              declines when the papers do not contain the answer. Retrieval combines BM25 and dense
-              search with a cross-encoder reranker, and Gemini writes the answer. In tests so far it
-              declined all 20 unanswerable questions, and 76 of 77 quotes matched the source exactly.
+              anomaly detection. Every answer has to quote the passage it comes from, the quote is checked
+              in code, and the system declines when the papers do not contain the answer. Retrieval combines
+              BM25 and dense search with a cross-encoder reranker, and Gemini writes the answer. On frozen
+              test sets, the right passage is among the top 5 for 91–93% of questions, 92–93% of answers are
+              judged acceptable with none wrong, and all 20 near-miss questions are refused.
             </p>
             <ul class="tags"><li>Python</li><li>RAG</li><li>BM25</li><li>Sentence Transformers</li><li>Reranking</li><li>Gemini API</li><li>FastAPI</li></ul>
+            <p class="project-links">
+              <a href="https://huggingface.co/spaces/peanut2butter9/scholarrag" target="_blank" rel="noopener">Recorded demo ↗</a>
+              <span class="sep" aria-hidden="true">·</span>
+              <a href="https://github.com/Peanut2Butter9/scholar-rag" target="_blank" rel="noopener">Code on GitHub ↗</a>
+            </p>
           </article>
 
           <article class="project">
