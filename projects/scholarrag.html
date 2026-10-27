@@ -74,14 +74,14 @@
 
         <!-- ============ ABOUT THE PROJECT ============ -->
         <p class="lead">
-          ScholarRAG answers questions about 200 arXiv papers on visual anomaly detection. Every answer has to
+          ScholarRAG answers questions about 200 arXiv papers on visual anomaly detection, where every answer has to
           quote the passage it comes from, the quote is checked against the paper, and when the papers don't
           contain the answer, it says so instead of making something up.
         </p>
 
         <figure class="photo-figure">
           <img src="../assets/projects/scholarrag/architecture.svg" width="1000" height="300" alt="Pipeline: papers are split into passages and indexed with BM25 and dense embeddings; a question retrieves passages from both, a reranker keeps the best five, and Gemini answers with quotes that are checked in code">
-          <figcaption>how a question goes through ScholarRAG.</figcaption>
+          <figcaption>how a question goes through ScholarRAG</figcaption>
         </figure>
 
         <p>
@@ -92,12 +92,12 @@
 
         <figure class="photo-figure">
           <img src="../assets/projects/scholarrag/demo-answer.png" width="1200" height="629" alt="A paraphrased question about the UBnormal benchmark, answered with two quotes, each marked verbatim">
-          <figcaption>a paraphrased question, answered with two quotes that are checked verbatim.</figcaption>
+          <figcaption>a paraphrased question, answered with two quotes that are checked verbatim</figcaption>
         </figure>
 
         <p>
           Before tuning anything, I froze two question sets (64 written by an LLM, 15 written by hand) and 20
-          near-miss questions, where the paper is in the corpus but the detail is not. Some numbers:
+          near-miss questions, where the paper is in the corpus but the detail is not. Some results:
         </p>
         <ul>
           <li>the right passage is among the 5 retrieved for 91% (LLM-written) and 93% (handwritten) of the questions;</li>
@@ -112,13 +112,13 @@
         </figure>
 
         <p>
-          Not everything worked. Smaller chunks, RRF alone, a smaller reranker and rewriting every question were
-          all tested and dropped; the numbers are in the notebooks. The online demo replays recorded answers,
-          because hosting the live version on Hugging Face needs a paid plan, but the full app runs on a laptop
-          (the steps are in the README). Built with the help of Claude Code (Opus 5.5 High-Ultracode).
+          However not everything worked: smaller chunks, RRF alone, a smaller reranker and rewriting every question were
+          all tested and dropped the numbers are in the notebooks. The online demo juts replays recorded answers,
+          because hosting the live version on Hugging Face needs a paid plan (I don't pay anything right now), but the full app runs on my computer
+          (the steps are in the README). This project built with the help of Claude Code (Opus 5.5 Ultracode).
         </p>
         <p>
-          I don't claim it is perfect; if you find a bug or have a suggestion, feel free to reach out to me on
+          If you find a bug or have a suggestion, feel free to reach out to me on
           <a href="https://github.com/Peanut2Butter9" target="_blank" rel="noopener">GitHub</a>.
         </p>
 
