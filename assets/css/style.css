@@ -254,10 +254,13 @@ ul, ol { margin: 0; padding: 0; }
 .intro .photo-figure.portrait img { max-width: 100%; }
 .intro .lead { font-size: 1.08rem; }
 
-/* ---- Homepage "Lately" stories and Miscellaneous ---- */
-.content .journey-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin: 32px 0 8px; }
-.content .journey-title:first-child { margin-top: 0; }
+/* ---- Homepage "Lately" and Miscellaneous ---- */
 .content .article h2.misc-title { margin-top: 24px; }
+
+/* A small row of three photos */
+.photo-row { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-width: 420px; padding: 0; margin: 0; }
+.photo-figure .photo-row img { aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
+.photo-row a:hover img { opacity: 0.85; }
 
 /* Instagram-style grid of photos */
 .insta { margin-top: 32px; }
