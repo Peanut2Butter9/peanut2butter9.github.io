@@ -248,6 +248,12 @@ ul, ol { margin: 0; padding: 0; }
 .photo-figure.portrait img { max-width: 340px; }
 .photo-figure figcaption { color: var(--muted); font-size: 0.9rem; margin-top: 8px; }
 
+/* Homepage: Honkan photo on the left, About Me text on the right */
+.intro { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 32px; align-items: start; margin-top: 20px; }
+.intro .photo-figure { margin: 0; }
+.intro .photo-figure.portrait img { max-width: 100%; }
+.intro .lead { font-size: 1.08rem; }
+
 /* ---- Homepage "Lately" stories and Miscellaneous ---- */
 .content .journey-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin: 32px 0 8px; }
 .content .journey-title:first-child { margin-top: 0; }
@@ -294,6 +300,8 @@ ul, ol { margin: 0; padding: 0; }
   .entry-meta { flex-direction: row; flex-wrap: wrap; gap: 0 12px; text-align: left; white-space: normal; margin-bottom: 2px; }
   .skill-group { grid-template-columns: 1fr; gap: 0; }
   .content section { padding-bottom: 40px; margin-bottom: 40px; }
+  .intro { grid-template-columns: 1fr; gap: 24px; }
+  .intro .photo-figure.portrait img { max-width: 340px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
